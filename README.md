@@ -69,7 +69,7 @@ Neural Radiance Fields (NeRF) excel at novel view synthesis but suffer from:
    - Joint optimization of RGB and depth
 
 4. **What are the trade-offs?**
-   - Rendering quality (PSNR, SSIM, LPIPS)
+   - Rendering quality (PSNR, SSIM)
    - Geometric accuracy (depth L1/L2 error)
    - Training time and computational cost
 
@@ -432,7 +432,7 @@ jupyter notebook 07_Comprehensive_Evaluation.ipynb
 ```
 
 **Generates:**
-- PSNR/SSIM/LPIPS comparison tables
+- PSNR/SSIM comparison tables
 - Depth error statistics
 - Visual comparison plots
 - Statistical significance tests
@@ -464,12 +464,12 @@ jupyter notebook 08_Rendering_and_Visualization.ipynb
 
 ### Quantitative Comparison (Lego Scene, 20K iterations)
 
-| Strategy | PSNR ↑ | SSIM ↑ | LPIPS ↓ | Depth L1 ↓ | Training Time | GPU Memory |
+| Strategy | PSNR ↑ | SSIM ↑ | Depth L1 ↓ | Training Time | GPU Memory |
 |----------|--------|--------|---------|-----------|---------------|------------|
-| **Baseline** | 22.47 dB | 0.903 | 0.085 | — | 12h 15min | 6.2 GB |
-| **Soft** | 22.41 dB | 0.901 | 0.089 | 0.34 m | 13h 30min | 6.8 GB |
-| **Hard** | 21.96 dB | 0.896 | 0.098 | 0.28 m | 16h 45min | 7.1 GB |
-| **Hybrid** | **22.14 dB** | **0.899** | **0.092** | **0.31 m** | 15h 20min | 7.3 GB |
+| **Baseline** | 22.47 dB | 0.903 | — | 12h 15min | 6.2 GB |
+| **Soft** | 22.41 dB | 0.901 | 0.34 m | 13h 30min | 6.8 GB |
+| **Hard** | 21.96 dB | 0.896 | 0.28 m | 16h 45min | 7.1 GB |
+| **Hybrid** | **22.14 dB** | **0.899** | **0.31 m** | 15h 20min | 7.3 GB |
 
 ### Key Findings
 
