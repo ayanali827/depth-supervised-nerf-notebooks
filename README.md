@@ -1,405 +1,276 @@
-# Depth-Supervised Neural Radiance Fields (NeRF) - Notebook Edition
+# Depth-Supervised NeRF: Neural Radiance Fields with Depth Guidance
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](https://jupyter.org/)
+### [Project Page](#) | [Paper](#) | [Video](#) | [Data](#data) | [Colab](#)
 
-**Complete NeRF implementation in Jupyter notebooks** with depth supervision, multiple training strategies, and comprehensive visualizations.
+Jupyter notebook implementation of depth-supervised neural radiance fields for improved 3D scene reconstruction.
 
-## 📖 Overview
+**Depth-Supervised NeRF: Improved Scene Reconstruction with Depth Guidance**
 
-This repository contains **all code as interactive Jupyter notebooks**—perfect for research, learning, and experimentation. No module extraction needed!
+Ayan Ali
 
-### Features
+## TL;DR quickstart
 
-✅ **Self-contained notebooks** - Everything in `.ipynb` format  
-✅ **Multiple strategies** - Baseline, Soft, Hard, and Hybrid training  
-✅ **Depth supervision** - Improved 3D geometric consistency  
-✅ **Complete pipeline** - Data loading → Training → Evaluation → Rendering  
-✅ **Visualizations** - Interactive plots, results analysis, comparisons  
-✅ **Documentation** - Markdown cells explain every step  
-✅ **Reproducible** - Full code and results in one place  
-
----
-
-## 📁 Notebook Structure
-
-### Core Notebooks (Main Implementation)
-
-```
-📓 00_Setup_and_Dependencies.ipynb
-   ├─ Environment setup
-   ├─ Import all libraries
-   ├─ GPU/CUDA configuration
-   └─ Helper utilities
-
-📓 01_Data_Loading.ipynb
-   ├─ Load NeRF Synthetic dataset
-   ├─ Inspect data shapes and ranges
-   ├─ Visualize input images
-   └─ Handle depth ground truth (if available)
-
-📓 02_Core_Components.ipynb
-   ├─ Positional Encoding (PosEnc)
-   ├─ NeRF MLP Architecture
-   ├─ Volume Rendering functions
-   └─ Helper utilities
-
-📓 03_Baseline_NeRF.ipynb
-   ├─ Vanilla NeRF (no depth)
-   ├─ Training loop
-   ├─ Evaluation metrics
-   ├─ Results analysis
-   └─ Visualization
-
-📓 04_Soft_Depth_Supervision.ipynb
-   ├─ Soft depth loss (MSE-based)
-   ├─ Weighted depth regularization
-   ├─ Training with depth supervision
-   ├─ Comparison with baseline
-   └─ Analysis
-
-📓 05_Hard_Depth_Sampling.ipynb
-   ├─ Hard depth-guided sampling
-   ├─ Surface concentration strategy
-   ├─ Freespace loss
-   ├─ Training implementation
-   └─ Results vs other strategies
-
-📓 06_Hybrid_Strategy.ipynb
-   ├─ Combined soft + hard approach
-   ├─ Balanced weighting
-   ├─ Training loop
-   ├─ Best results analysis
-   └─ Final comparisons
-
-📓 07_Comprehensive_Evaluation.ipynb
-   ├─ PSNR, SSIM, LPIPS metrics
-   ├─ Depth accuracy measurements
-   ├─ Cross-strategy comparison
-   ├─ Statistical analysis
-   └─ Results tables and plots
-
-📓 08_Rendering_and_Visualization.ipynb
-   ├─ Render novel views
-   ├─ Generate GIF/MP4
-   ├─ Depth map visualization
-   ├─ Comparison visualizations
-   └─ Publication-ready figures
-```
-
-### Analysis & Experiments
-
-```
-📓 Analysis/
-   ├─ 01_Ablation_Study.ipynb
-   │  └─ Compare network depth, width, frequency bands
-   ├─ 02_Hyperparameter_Sweep.ipynb
-   │  └─ Learning rate, batch size, sampling strategies
-   ├─ 03_Scene_Comparison.ipynb
-   │  └─ Lego, Chair, Drums scenes
-   └─ 04_Failure_Cases.ipynb
-      └─ When does NeRF struggle?
-
-📓 Experiments/
-   ├─ 01_Custom_Data.ipynb
-   │  └─ How to use your own dataset
-   ├─ 02_Extended_Training.ipynb
-   │  └─ Long training runs
-   ├─ 03_Model_Distillation.ipynb
-   │  └─ Smaller, faster models
-   └─ 04_Real_World_Data.ipynb
-      └─ KITTI, custom captures
-```
-
----
-
-## 🚀 Quick Start
-
-### 1. **Setup (2 minutes)**
+To setup a conda environment, download example training data, and launch Jupyter:
 
 ```bash
-# Clone repository
-git clone https://github.com/ayanali827/depth-supervised-nerf-notebooks.git
-cd depth-supervised-nerf-notebooks
-
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Launch Jupyter
+conda env create -f environment.yml
+conda activate nerf-depth
+bash download_example_data.sh
 jupyter notebook
 ```
 
-### 2. **Run Notebooks in Order**
+Then open and run the notebooks starting with `00_Setup_and_Dependencies.ipynb`.
+
+## Setup
+
+Python 3.8+ dependencies:
+
+- PyTorch >= 2.0.0
+- numpy
+- imageio
+- matplotlib  
+- scikit-image
+- tqdm
+- jupyter
+- lpips (for evaluation metrics)
+
+Create the conda environment by running:
+
+```bash
+conda env create -f environment.yml
+conda activate nerf-depth
+```
+
+## What is a Depth-Supervised NeRF?
+
+A neural radiance field is a fully connected network trained to reproduce input views of a single scene. Our extension incorporates **depth supervision** to improve geometric consistency:
+
+**Network Architecture**: The network maps from spatial location and viewing direction (5D input) to color and opacity (4D output), enabling differentiable volume rendering of novel views.
+
+**Depth Supervision Strategies**:
+- **Baseline**: RGB loss only
+- **Soft**: MSE loss on predicted depth 
+- **Hard**: Depth-guided ray sampling
+- **Hybrid**: Combined soft + hard (recommended)
+
+Optimizing a NeRF takes between a few hours and a day (depending on resolution) and requires a single GPU. Rendering from an optimized NeRF takes from less than a second to ~30 seconds per view.
+
+## Notebooks
+
+Our implementation is organized as self-contained Jupyter notebooks:
+
+### Core Notebooks (Main Implementation)
+
+**00_Setup_and_Dependencies.ipynb** - Environment setup, GPU configuration, imports
+
+**01_Data_Loading.ipynb** - Load NeRF Synthetic dataset, data inspection, visualization
+
+**02_Core_Components.ipynb** - Positional encoding (PosEnc), NeRF architecture, volume rendering
+
+**03_Baseline_NeRF.ipynb** - Vanilla NeRF (RGB loss only), training, evaluation
+
+**04_Soft_Depth_Supervision.ipynb** - Soft depth loss (MSE-based), training with depth
+
+**05_Hard_Depth_Sampling.ipynb** - Hard depth-guided sampling, surface concentration
+
+**06_Hybrid_Strategy.ipynb** - Combined soft + hard approach, best results
+
+**07_Comprehensive_Evaluation.ipynb** - PSNR, SSIM, LPIPS, depth metrics, cross-strategy comparison
+
+**08_Rendering_and_Visualization.ipynb** - Novel view rendering, GIF/MP4 generation, visualizations
+
+### Analysis & Experiments
+
+**Analysis/** - Ablation studies, hyperparameter sweeps, scene comparisons
+
+**Experiments/** - Custom data, extended training, model distillation
+
+## Running code
+
+### Quickstart
+
+After installing dependencies and downloading data:
+
+```bash
+jupyter notebook
+```
+
+Open and run the notebooks in order:
 
 ```
 00_Setup_and_Dependencies.ipynb
-    ↓
-01_Data_Loading.ipynb
-    ↓
+  ↓
+01_Data_Loading.ipynb  
+  ↓
 02_Core_Components.ipynb
-    ↓
-03_Baseline_NeRF.ipynb  OR  04_Soft  OR  05_Hard  OR  06_Hybrid
-    ↓
+  ↓
+03_Baseline_NeRF.ipynb (or 04_Soft, 05_Hard, 06_Hybrid)
+  ↓
 07_Comprehensive_Evaluation.ipynb
-    ↓
+  ↓
 08_Rendering_and_Visualization.ipynb
 ```
 
-### 3. **Example Usage in Notebooks**
+### Training a NeRF
 
-```python
-# All functions/classes available throughout notebooks
-model = NeRF(D=8, W=256).cuda()
-rays_o, rays_d = get_rays(H, W, focal, c2w)
-rgb, depth = render_rays(model, rays_o, rays_d)
-```
+**Baseline NeRF (RGB only)**:
 
----
+Open `03_Baseline_NeRF.ipynb`. After ~200k iterations (15-20 hours on V100), you'll have a trained model with results in `results/baseline/`.
 
-## 📊 Notebook Features
+**With Depth Supervision**:
 
-### Each Strategy Notebook Includes:
+Open `04_Soft_Depth_Supervision.ipynb` (soft depth loss), `05_Hard_Depth_Sampling.ipynb` (guided sampling), or `06_Hybrid_Strategy.ipynb` (combined).
 
-✅ **Theory** - Markdown explanation of the approach  
-✅ **Implementation** - Full code  
-✅ **Training** - Complete training loop with progress bars  
-✅ **Evaluation** - Metrics computation (PSNR, SSIM, LPIPS, Depth L1)  
-✅ **Visualization** - Plots, comparisons, qualitative results  
-✅ **Analysis** - Loss curves, convergence analysis, insights  
+### Rendering a NeRF
 
-### Advantages of Notebook Format
+Open `08_Rendering_and_Visualization.ipynb` to:
+- Render novel views
+- Generate GIF/MP4 videos  
+- Visualize depth maps
+- Create publication figures
 
-✅ **Interactive exploration** - Run cells, modify, experiment  
-✅ **Easy visualization** - Plots inline, no separate scripts  
-✅ **Self-contained** - Code + output + documentation together  
-✅ **Documentation** - Markdown cells explain methodology  
-✅ **Reproducibility** - Save entire execution with outputs  
-✅ **Teaching-friendly** - Perfect for learning and sharing  
-✅ **No dependencies** - No need to create separate Python modules  
+### Evaluating Results
 
----
+Open `07_Comprehensive_Evaluation.ipynb` to compute:
+- PSNR, SSIM, LPIPS metrics
+- Depth accuracy measurements
+- Cross-strategy comparisons
 
-## 🎓 Training Strategies
+## Results Comparison
 
-### 1. **Baseline NeRF** (Notebook 03)
-```python
-# RGB loss only, no depth supervision
-loss = MSE(rgb_pred, rgb_gt)
-```
-
-### 2. **Soft Depth** (Notebook 04)
-```python
-# Direct MSE loss on depth predictions
-loss = MSE(rgb_pred, rgb_gt) + λ_depth * MSE(depth_pred, depth_gt)
-```
-
-### 3. **Hard Sampling** (Notebook 05)
-```python
-# Depth-guided sampling, concentration near surface
-loss = MSE(rgb_pred, rgb_gt) + λ_free * L_freespace + λ_surface * L_surface
-```
-
-### 4. **Hybrid** (Notebook 06)
-```python
-# Combined soft + hard approach
-loss = MSE(rgb_pred, rgb_gt) + λ_soft * L_soft + λ_hard * L_hard
-```
-
----
-
-## 📈 Results Comparison
-
-| Strategy | PSNR | SSIM | LPIPS | Depth L1 |
-|----------|------|------|-------|----------|
+| Strategy | PSNR ↑ | SSIM ↑ | LPIPS ↓ | Depth L1 ↓ |
+|----------|--------|--------|---------|----------|
 | Baseline | 22.47 | 0.903 | 0.085 | — |
 | Soft | 22.41 | 0.901 | 0.089 | 0.34 m |
 | Hard | 21.96 | 0.896 | 0.098 | 0.28 m |
 | **Hybrid** | **22.14** | **0.899** | **0.092** | **0.31 m** |
 
----
+## Data
 
-## 📦 What You'll Get
+Download example data:
 
-After running all notebooks:
-
-```
-results/
-├─ baseline/
-│  ├─ model.pth           # Trained weights
-│  ├─ loss_history.npy    # Training loss
-│  ├─ psnr_history.npy    # PSNR over time
-│  └─ renders/            # Novel view renders
-├─ soft/
-├─ hard/
-└─ hybrid/
-   ├─ best_results.mp4    # Rendered video
-   ├─ depth_comparison.png
-   └─ metrics.json
+```bash
+bash download_example_data.sh
 ```
 
----
+Or download manually from:
+- **NeRF Synthetic Dataset**: [Google Drive](https://drive.google.com/drive/folders/1JwYxcT-XDksuBi0DjG8aeRHbf5c-4eCR)
+- **LLFF Real-World Data**: Same link as above
+- **Custom Data**: Use COLMAP to compute camera poses
 
-## 📋 Dependencies
+Dataset structure:
 
 ```
-torch>=2.0.0
-torchvision>=0.15.0
-numpy>=1.21.0
-imageio>=2.9.0
-imageio-ffmpeg>=0.4.5
-tqdm>=4.62.0
-matplotlib>=3.4.0
-scikit-image>=0.18.0
-opencv-python>=4.5.0
-jupyter>=1.0.0
-ipykernel>=6.0.0
-lpips>=0.1.4
+data/
+├── nerf_synthetic/
+│   ├── lego/
+│   │   ├── transforms_train.json
+│   │   ├── transforms_test.json
+│   │   └── images/
+│   ├── chair/
+│   └── ...
+└── llff/
+    ├── fern/
+    └── ...
 ```
 
-All automatically installed via `pip install -r requirements.txt`
+## Customization
 
----
+### Hyperparameters
 
-## 🎓 Learning Path
-
-**Beginner:**
-- Run 00 → 01 → 02 → 03 (Baseline NeRF only)
-- Focus on understanding volume rendering
-
-**Intermediate:**
-- Run 03 → 04 → 05 → 06 (Compare strategies)
-- See how depth helps
-
-**Advanced:**
-- Modify hyperparameters in any notebook
-- Implement your own depth supervision
-- Extend to custom datasets
-
-**Research:**
-- Use Analysis/ notebooks for ablation studies
-- Use Experiments/ for new ideas
-- Publish-ready visualizations included
-
----
-
-## 🔧 Customization
-
-### Change Training Parameters
-
-In any strategy notebook:
+In any strategy notebook, modify:
 
 ```python
-# Cell: "Training Configuration"
-num_iters = 20000      # Increase for better results
-batch_rays = 1024      # Reduce if CUDA OOM
-learning_rate = 5e-4   # Adjust convergence speed
-num_samples = 64       # More = slower but better
+num_iters = 20000          # Training iterations
+batch_rays = 1024          # Rays per batch  
+learning_rate = 5e-4       # Learning rate
+num_samples = 64           # Samples per ray
+lambda_depth = 0.01        # Depth weight (soft)
+lambda_freespace = 0.005   # Freespace weight (hard)
 ```
 
-### Use Different Dataset
+### Scenes
 
 ```python
-# In Notebook 01, change:
-scene = 'lego'  # Change to 'chair', 'drums', 'mic', etc.
+scene = 'lego'  # Change to 'chair', 'drums', 'mic', 'materials', 'hotdog'
 ```
 
-### Modify Network Architecture
+### Architecture
 
 ```python
-# In Notebook 02, modify NeRF class:
 model = NeRF(
-    D=10,      # Deeper network
-    W=512,     # Wider network
-    in_channels_xyz=63,  # More frequency bands
+    D=8,                    # Network depth
+    W=256,                  # Network width  
+    in_channels_xyz=63,     # Position encoding channels
+    in_channels_dir=27,     # Direction encoding channels
+    skips=[4]               # Skip connection layers
 )
 ```
 
----
+## Advanced: Custom Data
 
-## 🐛 Troubleshooting
+For your own scenes, you need:
 
-**CUDA Out of Memory:**
-- Reduce `batch_rays` (1024 → 512)
+1. **Poses**: 3×4 camera-to-world transformation matrices
+2. **Intrinsics**: Height, width, focal length
+3. **Images**: RGB PNG files
+4. **Depth** (optional): For depth supervision
+
+Generate poses using [COLMAP](https://colmap.github.io/) with `imgs2poses.py` from [LLFF](https://github.com/Fyusion/LLFF).
+
+## Troubleshooting
+
+**Out of memory**:
+- Reduce `batch_rays` from 1024 to 512
 - Use `halfres=True` in data loading
-- Reduce `num_samples` (64 → 32)
+- Reduce `num_samples` from 64 to 32
 
-**Slow Training:**
-- Use GPU (CUDA)
-- Check batch size is reasonable
-- Verify no expensive operations in loops
+**Slow training**:  
+- Ensure GPU is being used
+- Check batch size is not too small
+- Verify no expensive ops in training loop
 
-**Poor Results:**
+**Poor results**:
 - Try `hybrid` strategy (usually best)
 - Increase training iterations
-- Check depth ground truth is correct
+- Check depth ground truth quality
 
----
+## Extracting Geometry
 
-## 📚 Resources
+See `extract_mesh.ipynb` for marching cubes extraction:
 
-- **Original NeRF Paper:** https://arxiv.org/abs/2003.08934
-- **NeRF Synthetic Dataset:** https://drive.google.com/drive/folders/1JwYxcT-XDksuBi0DjG8aeRHbf5c-4eCR
-- **PyTorch NeRF:** https://github.com/yenchenlin/nerf-pytorch
+```bash
+pip install trimesh pyrender PyMCubes
+```
 
----
+## Citation
 
-## 📝 Citing This Work
+If you use this code, please cite the original NeRF paper:
 
 ```bibtex
-@misc{ali2025depthnerf-notebooks,
-  title={Depth-Supervised Neural Radiance Fields (Notebook Edition)},
+@inproceedings{mildenhall2020nerf,
+  title={NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis},
+  author={Mildenhall, Ben and Srinivasan, Pratul P and Tancik, Matthew and Barron, Jonathan T and Ramamoorthi, Ravi and Ng, Ren},
+  year={2020},
+  booktitle={ECCV},
+}
+```
+
+And our depth supervision extension:
+
+```bibtex
+@misc{ali2025depthnerf,
+  title={Depth-Supervised Neural Radiance Fields},
   author={Ali, Ayan},
   year={2025},
   howpublished={\url{https://github.com/ayanali827/depth-supervised-nerf-notebooks}}
 }
-
-@inproceedings{mildenhall2020nerf,
-  title={NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis},
-  author={Mildenhall, Ben and Srinivasan, Prabhakaran and others},
-  booktitle={ECCV},
-  year={2020}
-}
 ```
 
----
+## Acknowledgments
 
-## ✅ Benefits of This Approach
+Based on the original [NeRF implementation](https://github.com/bmild/nerf) by Mildenhall et al. Extended with depth supervision strategies for improved geometric consistency.
 
-### vs. Python Modules:
-✅ No module extraction needed  
-✅ Interactive exploration  
-✅ Easy to modify and experiment  
-✅ Self-contained (code + results)  
-✅ Perfect for research sharing  
-✅ Markdown documentation built-in  
+## License
 
-### vs. Single Notebook:
-✅ Organized into logical sections  
-✅ Run individual sections independently  
-✅ Easy to compare strategies  
-✅ Reusable code cells  
-✅ Professional structure  
-
----
-
-## 🚀 Next Steps
-
-1. **Clone repository** and install dependencies
-2. **Run Notebook 00** (Setup)
-3. **Download data** (NeRF Synthetic or custom)
-4. **Run strategy notebooks** (03-06) one at a time
-5. **Compare results** with Notebook 07
-6. **Visualize** with Notebook 08
-7. **Experiment** with Analysis/ notebooks
-8. **Modify and extend** for your own research
-
----
-
-
-
+MIT License
