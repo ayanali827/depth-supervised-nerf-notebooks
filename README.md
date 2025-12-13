@@ -5,7 +5,6 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 
 ---
-
 ## 👥 **Participants**
 
 **Ayan Ali**  
@@ -14,6 +13,17 @@ Master's Program: Robotics and Artificial Intelligence (2024-2026)
 Email: ayansaleem827@gmail.com  
 GitHub: [@ayanali827](https://github.com/ayanali827)
 
+**Urwa**  
+ITMO University, Faculty of Information Technology and Programming  
+Master's Program: Robotics and Artificial Intelligence (2024-2026)  
+Email: urwa.mughal7@gmail.com
+GitHub: [@UrwaMughal7](https://github.com/UrwaMughal7)
+
+**Umer Ahmed Baig Mughal**  
+ITMO University, Faculty of Information Technology and Programming  
+Master's Program: Robotics and Artificial Intelligence (2024-2026)  
+Email: umerahmedbaig98@gmail.com
+GitHub: [umerahmedbaig7](https://github.com/umerahmedbaig7)
 ---
 
 ## 🎯 **Research Objective**
@@ -652,6 +662,8 @@ MIT License - see [LICENSE](LICENSE) file
 ---
 
 **Last Updated:** December 13, 2025  
-**Author:** Ayan Ali ([@ayanali827](https://github.com/ayanali827))  
+**Author:** Ayan Ali ([@ayanali827](https://github.com/ayanali827)),
+Umer Ahmed Baig Mughal [umerahmedbaig7](https://github.com/umerahmedbaig7), 
+Urwa [@UrwaMughal7](https://github.com/UrwaMughal7)
 **Course:** Machine Learning in Robotics, ITMO University  
 **Research Focus:** Depth-supervised Neural Radiance Fields
