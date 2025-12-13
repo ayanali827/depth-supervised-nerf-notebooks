@@ -1,0 +1,10 @@
+# Analysis Notebooks
+
+This directory contains advanced analysis and ablation studies:
+
+- **01_Ablation_Study.ipynb** - Network depth, width, frequency bands
+- **02_Hyperparameter_Sweep.ipynb** - Learning rate, batch size, sampling strategies
+- **03_Scene_Comparison.ipynb** - Compare performance across Lego, Chair, Drums
+- **04_Failure_Cases.ipynb** - When does NeRF struggle?
+
+These are optional notebooks for deeper investigation of your models.
