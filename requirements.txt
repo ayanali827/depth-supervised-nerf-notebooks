@@ -1,0 +1,28 @@
+# Core ML/DL
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.21.0
+scikit-learn>=0.24.0
+
+# Data & Visualization
+imageio>=2.9.0
+imageio-ffmpeg>=0.4.5
+matplotlib>=3.4.0
+scikit-image>=0.18.0
+opencv-python>=4.5.0
+Pillow>=8.0.0
+
+# Utilities
+tqdm>=4.62.0
+PyYAML>=5.4
+
+# Jupyter & Interactive
+jupyter>=1.0.0
+ipykernel>=6.0.0
+ipywidgets>=7.6.0
+notebook>=6.4.0
+
+# Monitoring & Metrics
+tensorboard>=2.8.0
+lpips>=0.1.4
+scipy>=1.7.0
