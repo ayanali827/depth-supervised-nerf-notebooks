@@ -401,12 +401,5 @@ model = NeRF(
 
 ---
 
-**Repository:** https://github.com/ayanali827/depth-supervised-nerf-notebooks  
-**Format:** 100% Jupyter Notebooks  
-**Status:** ✅ Production Ready  
-**Author:** Ayan Ali  
-**Last Updated:** December 13, 2025
 
----
 
-**Happy experimenting! 🚀**
