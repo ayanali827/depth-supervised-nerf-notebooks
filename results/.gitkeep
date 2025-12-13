@@ -1,0 +1,40 @@
+# Results Directory
+
+This directory will contain training outputs and results:
+
+## Directory Structure (Created by notebooks)
+
+```
+results/
+├── baseline/
+│   ├── model.pth              # Trained weights
+│   ├── loss_history.npy       # Training loss over iterations
+│   ├── psnr_history.npy       # PSNR over training
+│   ├── renders/               # Novel view renderings
+│   ├── depth_maps/            # Predicted depth maps
+│   └── metrics.json           # Final metrics (PSNR, SSIM, LPIPS)
+├── soft/
+│   ├── model.pth
+│   ├── loss_history.npy
+│   ├── renders/
+│   └── metrics.json
+├── hard/
+│   ├── model.pth
+│   ├── renders/
+│   └── metrics.json
+└── hybrid/
+    ├── model.pth
+    ├── renders/
+    ├── best_results.mp4       # Rendered video
+    ├── depth_comparison.png   # Comparison image
+    └── metrics.json
+```
+
+## Notes
+
+- All `.pth` model files are in `.gitignore` (too large)
+- All `.npy` data files are in `.gitignore`
+- All rendered videos are in `.gitignore`
+- Metrics.json files can be committed if < 1MB
+
+Note: This directory is in .gitignore to keep repository size small.
