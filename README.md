@@ -24,6 +24,7 @@ ITMO University, Faculty of Information Technology and Programming
 Master's Program: Robotics and Artificial Intelligence (2024-2026)  
 Email: umerahmedbaig98@gmail.com
 GitHub: [umerahmedbaig7](https://github.com/umerahmedbaig7)
+
 ---
 
 ## 🎯 **Research Objective**
