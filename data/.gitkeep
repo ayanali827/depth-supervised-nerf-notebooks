@@ -1,0 +1,42 @@
+# Data Directory
+
+Download and place datasets here:
+
+## NeRF Synthetic Dataset
+
+Download from: https://drive.google.com/drive/folders/1JwYxcT-XDksuBi0DjG8aeRHbf5c-4eCR
+
+Extract to `data/nerf_synthetic/` with structure:
+```
+data/nerf_synthetic/
+├── lego/
+│   ├── transforms_train.json
+│   ├── transforms_test.json
+│   └── images/
+├── chair/
+├── drums/
+├── ficus/
+├── hotdog/
+├── materials/
+├── mic/
+└── ship/
+```
+
+## LLFF Real-World Data (Optional)
+
+Included in the same Google Drive link.
+
+Extract to `data/llff/` with structure:
+```
+data/llff/
+├── fern/
+├── flower/
+├── fortress/
+├── horns/
+├── leaves/
+├── orchids/
+├── room/
+└── trex/
+```
+
+Note: This directory is in .gitignore (large files, not committed to GitHub)
