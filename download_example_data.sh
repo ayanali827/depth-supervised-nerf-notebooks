@@ -18,7 +18,7 @@ cd data
 
 echo ""
 echo "Please download the NeRF Synthetic dataset from:"
-echo "https://drive.google.com/drive/folders/1JwYxcT-XDksuBi0DjG8aeRHbf5c-4eCR"
+echo "https://drive.google.com/file/d/18q4eiXi2JwYVehN61gZ6PKY_k4jaJwYd/view?usp=sharing"
 echo ""
 echo "Extract to: data/nerf_synthetic/"
 echo ""
