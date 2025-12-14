@@ -211,7 +211,6 @@ where T(t) = exp(-∫ σ(r(s)) ds)  (transmittance)
 
 ### Video Demonstration
 
-**[▶ Watch Full Research Demo on YouTube](https://youtube.com/placeholder)**  
 *Showing training process, comparison of all strategies, and quantitative results*
 
 ### Visual Comparison
@@ -233,64 +232,6 @@ where T(t) = exp(-∫ σ(r(s)) ds)  (transmittance)
 
 *Results will be uploaded after experiments complete*
 
----
-
-## 📦 **Installation and Deployment**
-
-### System Requirements
-
-**Hardware:**
-- GPU: NVIDIA GPU with 8GB+ VRAM (tested on RTX 3080, V100)
-- RAM: 16GB+ recommended
-- Storage: 10GB+ for data and models
-
-**Software:**
-- OS: Ubuntu 20.04 / Windows 10+ / macOS 12+
-- Python: 3.8 or higher
-- CUDA: 11.7+ (for GPU acceleration)
-
-**Tested Environments:**
-- ✅ **Local**: Ubuntu 22.04, CUDA 12.1, RTX 4090
-- ✅ **Google Colab**: Free tier with T4 GPU
-- ✅ **Docker**: Ubuntu 20.04 base
-
----
-
-### Local Installation (Recommended)
-
-#### Step 1: Clone Repository
-
-```bash
-git clone https://github.com/ayanali827/depth-supervised-nerf-notebooks.git
-cd depth-supervised-nerf-notebooks
-```
-
-#### Step 2: Create Virtual Environment
-
-```bash
-# Using venv
-python3 -m venv venv
-source venv/bin/activate  # Linux/macOS
-# OR: venv\Scripts\activate  (Windows)
-
-# Using Conda (alternative)
-conda create -n nerf-depth python=3.9
-conda activate nerf-depth
-```
-
-#### Step 3: Install Dependencies
-
-```bash
-# Install PyTorch with CUDA
-pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cu118
-
-# Install project dependencies
-pip install -r requirements.txt
-
-# Verify GPU
-python -c "import torch; print('CUDA:', torch.cuda.is_available())"
-```
-
 #### Step 4: Download Data
 
 ```bash
@@ -305,30 +246,6 @@ bash download_example_data.sh
 ```bash
 jupyter notebook
 # Open http://localhost:8888
-```
-
----
-
-### Google Colab (No Setup)
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ayanali827/depth-supervised-nerf-notebooks/blob/main/00_Setup_and_Dependencies.ipynb)
-
-1. Click badge above
-2. Runtime → Change runtime type → GPU (T4)
-3. Run cells sequentially
-
----
-
-### Docker (Isolated Environment)
-
-```bash
-# Build
-docker build -t nerf-depth .
-
-# Run with GPU
-docker run --gpus all -p 8888:8888 -v $(pwd):/workspace nerf-depth
-
-# Access: http://localhost:8888
 ```
 
 ---
@@ -374,7 +291,7 @@ results/baseline/
 └── loss_history.npy
 ```
 
-**Training time:** ~12-15 hours (20K iterations, V100)
+**Training time:** ~12-15 hours (50K iterations, V100)
 
 ---
 
@@ -460,37 +377,26 @@ jupyter notebook 08_Rendering_and_Visualization.ipynb
 
 ---
 
+
+
+
 ## 📊 **Research Results**
 
 ### Quantitative Comparison (Lego Scene, 20K iterations)
 
-| Strategy   | PSNR ↑   | SSIM ↑ | Depth L1 ↓ | Training Time | GPU Memory |
-|-----------|----------|--------|------------|---------------|------------|
-| **Baseline** | 22.47 dB | 0.903  | —          | 12h 15min     | 6.2 GB    |
-| **Soft**     | 22.41 dB | 0.901  | 0.34 m     | 13h 30min     | 6.8 GB    |
-| **Hard**     | 21.96 dB | 0.896  | 0.28 m     | 16h 45min     | 7.1 GB    |
-| **Hybrid**   | **22.14 dB** | **0.899** | **0.31 m** | 15h 20min     | 7.3 GB    |
+| Strategy   | PSNR ↑         | SSIM ↑         | MSE ↓          | MAE ↓          | Robustness    |
+|-----------|----------------|----------------|----------------|----------------|---------------|
+| **Baseline** | 19.91 ± 1.60 dB | 0.658 ± 0.064 | 0.0101 ± 0.003 | 0.0477 ± 0.012 | High variance |
+| **Soft**     | 20.72 ± 1.23 dB | 0.523 ± 0.068 | 0.0088 ± 0.002 | 0.0482 ± 0.008 | Poor structure |
+| **Hard**     | 21.27 ± 1.06 dB | 0.686 ± 0.027 | 0.0079 ± 0.002 | 0.0393 ± 0.006 | Stable        |
+| **Hybrid**   | **22.32 ± 1.04 dB** | **0.778 ± 0.029** | **0.0060 ± 0.001** | **0.0318 ± 0.005** | **Most robust** |
 
+**Key Findings:**
+- 🏆 Hybrid achieves **+2.15 dB PSNR** and **+0.12 SSIM** over baseline
+- ⚠️ Soft paradox: Better PSNR than baseline but **worst SSIM (0.523)** — depth loss hurts structural quality
+- 🎯 Hybrid reduces error by **41% (MSE)** and **33% (MAE)** compared to baseline
+- 📊 Lowest variance: Hybrid (±1.04 dB) vs Baseline (±1.60 dB) — **35% more consistent**
 
-### Key Findings
-
-**Rendering Quality (PSNR/SSIM):**
-- ✅ Baseline achieves highest RGB quality (no depth constraints)
-- ⚠️ Soft depth: minimal RGB degradation (-0.06 dB PSNR)
-- ⚠️ Hard sampling: noticeable RGB quality drop (-0.51 dB)
-- ✅ Hybrid: balanced RGB quality (-0.33 dB)
-
-**Geometric Accuracy (Depth Error):**
-- ❌ Baseline: No depth supervision → unreliable geometry
-- ✅ Hard: **Best depth accuracy** (0.28m L1 error)
-- ⚠️ Soft: Moderate improvement (0.34m)
-- ✅ Hybrid: **Good depth accuracy** (0.31m)
-
-**Trade-offs:**
-- **Baseline:** Best RGB, worst geometry
-- **Soft:** Easy to implement, modest gains
-- **Hard:** Best geometry, RGB quality loss
-- **Hybrid:** **Best balance** for real applications
 
 ### Research Conclusions
 
