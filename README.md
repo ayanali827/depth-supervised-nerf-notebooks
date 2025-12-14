@@ -9,11 +9,9 @@
 ## 🏆 **Best Result Achieved - Hybrid Strategy**
 
 <p align="center">
-  <img src="hybrid.gif" alt="Hybrid Strategy Animation" width="600"/>
+  <img src="hybrid_best.gif" alt="Hybrid Strategy Best Result" width="600"/>
   <br>
-  <img src="hybrid_result.jpg" alt="Hybrid Strategy Best Result" width="600" style="margin-top: 20px;"/>
-  <br>
-  <em><strong>🎯 Best result achieved:</strong> The Hybrid depth supervision strategy combines soft and hard constraints, achieving <strong>22.32 dB PSNR</strong> and <strong>0.778 SSIM</strong> - the highest quality rendering with optimal geometric accuracy.</em>
+  <em><strong>🏆 Best result achieved:</strong> The Hybrid depth supervision strategy combines soft and hard constraints, achieving <strong>22.32 dB PSNR</strong> and <strong>0.778 SSIM</strong> - the highest quality rendering with optimal geometric accuracy.</em>
 </p>
 
 ---
@@ -507,8 +505,8 @@ depth-supervised-nerf-notebooks/
 ├── .gitignore                              ← Git exclusions
 ├── Dockerfile                              ← Docker image
 ├── download_example_data.sh                ← Data script
-├── hybrid.gif                              ← Best result animation
-├── hybrid_result.jpg                       ← Best result image
+├── hybrid.gif                              ← Existing best result animation
+├── hybrid_best.gif                         ← New best result GIF
 │
 ├── 00_Setup_and_Dependencies.ipynb         ← Environment setup
 ├── 01_Data_Loading.ipynb                   ← Dataset loading
