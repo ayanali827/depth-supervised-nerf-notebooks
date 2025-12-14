@@ -11,7 +11,12 @@
 <p align="center">
   <img src="hybrid_best.gif" alt="Hybrid Strategy Best Result" width="600"/>
   <br>
-  <em><strong>🏆 Best result achieved:</strong> The Hybrid depth supervision strategy combines soft and hard constraints, achieving <strong>22.32 dB PSNR</strong> and <strong>0.778 SSIM</strong> - the highest quality rendering with optimal geometric accuracy.</em>
+  <em><strong>🏆 Best result achi![hybrid](https://github.com/user-attachments/assets/22b194e5-78a9-4ab5-9de1-c9f6df41bab6)
+eved:</strong> The Hybrid depth su
+
+https://github.com/user-attachments/assets/6d5dda57-87f8-4b45-84fe-8ea9a72f2011
+
+pervision strategy combines soft and hard constraints, achieving <strong>22.32 dB PSNR</strong> and <strong>0.778 SSIM</strong> - the highest quality rendering with optimal geometric accuracy.</em>
 </p>
 
 ---
