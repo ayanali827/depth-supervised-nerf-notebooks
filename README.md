@@ -5,6 +5,19 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 
 ---
+
+## 🏆 **Best Result Achieved - Hybrid Strategy**
+
+<p align="center">
+  <img src="hybrid.gif" alt="Hybrid Strategy Animation" width="600"/>
+  <br>
+  <img src="hybrid_result.jpg" alt="Hybrid Strategy Best Result" width="600" style="margin-top: 20px;"/>
+  <br>
+  <em><strong>🎯 Best result achieved:</strong> The Hybrid depth supervision strategy combines soft and hard constraints, achieving <strong>22.32 dB PSNR</strong> and <strong>0.778 SSIM</strong> - the highest quality rendering with optimal geometric accuracy.</em>
+</p>
+
+---
+
 ## 👥 **Participants**
 
 **Ayan Ali**  
@@ -205,6 +218,73 @@ where T(t) = exp(-∫ σ(r(s)) ds)  (transmittance)
 
 **For detailed derivations, see [THEORY.md](THEORY.md)**
 
+---
+
+## 🚀 **Getting Started**
+
+### Prerequisites
+
+- Python 3.8+
+- CUDA-capable GPU (8GB+ VRAM recommended)
+- Linux/macOS/Windows with WSL2
+
+### Installation Options
+
+#### Option 1: Docker (Recommended)
+
+```bash
+# Build image
+docker build -t depth-nerf .
+
+# Run container with GPU
+docker run --gpus all -p 8888:8888 -v $(pwd):/workspace depth-nerf
+```
+
+#### Option 2: Conda Environment
+
+```bash
+# Create environment
+conda create -n depth-nerf python=3.9
+conda activate depth-nerf
+
+# Install PyTorch
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+#### Option 3: Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+pip install -r requirements.txt
+```
+
+---
+
+### Quick Start
+
+#### Step 1: Clone Repository
+
+```bash
+git clone https://github.com/ayanali827/depth-supervised-nerf-notebooks.git
+cd depth-supervised-nerf-notebooks
+```
+
+#### Step 2: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+#### Step 3: Verify Installation
+
+```bash
+python -c "import torch; print(torch.cuda.is_available())"
+# Should print: True
+```
 
 #### Step 4: Download Data
 
@@ -368,6 +448,7 @@ jupyter notebook 08_Rendering_and_Visualization.ipynb
 - 🎯 Hybrid reduces error by **41% (MSE)** and **33% (MAE)** compared to baseline
 - 📊 Lowest variance: Hybrid (±1.04 dB) vs Baseline (±1.60 dB) — **35% more consistent**
 
+---
 
 ### Research Conclusions
 
@@ -411,9 +492,10 @@ Depth-NeRF-Research/
 │
 └── raw_data/                 ← NeRF Synthetic dataset (2.5GB)
     └── nerf_synthetic/
-
-
 ```
+
+---
+
 ## 📂 **Repository Structure**
 
 ```
@@ -425,6 +507,8 @@ depth-supervised-nerf-notebooks/
 ├── .gitignore                              ← Git exclusions
 ├── Dockerfile                              ← Docker image
 ├── download_example_data.sh                ← Data script
+├── hybrid.gif                              ← Best result animation
+├── hybrid_result.jpg                       ← Best result image
 │
 ├── 00_Setup_and_Dependencies.ipynb         ← Environment setup
 ├── 01_Data_Loading.ipynb                   ← Dataset loading
@@ -440,9 +524,7 @@ depth-supervised-nerf-notebooks/
 │   ├── ablation_studies.ipynb
 │   └── hyperparameter_sweep.ipynb
 │
-├── Experiments/                            ← Custom experiments
-│   ├── custom_scenes.ipynb
-│   └── real_world_data.ipynb
+├── Complete_Pipeline/                      ← Complete workflows
 │
 ├── data/                                   ← Datasets (git-ignored)
 │   └── nerf_synthetic/lego/
@@ -487,6 +569,21 @@ python -c "import torch; print(torch.cuda.is_available())"
 - Try hybrid strategy (most robust)
 - Check depth ground truth quality
 
+---
+
+## 📚 **Citation**
+
+```bibtex
+@misc{ali2025depthnerf,
+  title={Research on Improving NeRF Training Quality Using Depth Data},
+  author={Ali, Ayan and Mughal, Umer Ahmed Baig and Urwa},
+  year={2025},
+  institution={ITMO University},
+  note={Comparative study of depth supervision strategies for Neural Radiance Fields},
+  howpublished={\url{https://github.com/ayanali827/depth-supervised-nerf-notebooks}}
+}
+```
+
 **Original NeRF:**
 
 ```bibtex
@@ -498,6 +595,13 @@ python -c "import torch; print(torch.cuda.is_available())"
 }
 ```
 
+---
+
+## 📄 **License**
+
+MIT License - see [LICENSE](LICENSE) file
+
+---
 
 ## 🙏 **Acknowledgments**
 
@@ -508,9 +612,7 @@ python -c "import torch; print(torch.cuda.is_available())"
 
 ---
 
-**Last Updated:** December 13, 2025  
-**Author:** Ayan Ali ([@ayanali827](https://github.com/ayanali827)),
-Umer Ahmed Baig Mughal [umerahmedbaig7](https://github.com/umerahmedbaig7), 
-Urwa [@UrwaMughal7](https://github.com/UrwaMughal7)
+**Last Updated:** December 14, 2025  
+**Authors:** Ayan Ali ([@ayanali827](https://github.com/ayanali827)), Umer Ahmed Baig Mughal ([@umerahmedbaig7](https://github.com/umerahmedbaig7)), Urwa ([@UrwaMughal7](https://github.com/UrwaMughal7))  
 **Course:** Machine Learning in Robotics, ITMO University  
 **Research Focus:** Depth-supervised Neural Radiance Fields
