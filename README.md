@@ -351,30 +351,6 @@ jupyter notebook 08_Rendering_and_Visualization.ipynb
 
 ---
 
-
-<p align="center">
-  <img src="assets/hybrid_best.gif" alt="Hybrid Depth-Supervised NeRF Result" width="700"/>
-  <br>
-  <em><strong>Best result:</strong> Hybrid depth supervision strategy on the LEGO NeRF scene.</em>
-</p>
-
-
-### Best Visual Result (Hybrid Strategy)
-
-<p align="center">
-  <img src="assets/hybrid_best.gif" alt="Hybrid NeRF Rendering - Best Result" width="600"/>
-  <br>
-  <em>Hybrid strategy achieves the best trade-off between RGB quality and depth consistency.</em>
-</p>
-
-
-
-
----
-
-
-
-
 ## 📊 **Research Results**
 
 ### Quantitative Comparison (Lego Scene, 20K iterations)
