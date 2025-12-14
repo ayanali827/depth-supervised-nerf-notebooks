@@ -441,7 +441,7 @@ jupyter notebook 08_Rendering_and_Visualization.ipynb
 
 ## 🏆 **Best Result Achieved (Hybrid)**
 
-![hybrid](https://github.com/user-attachments/assets/ea99a1a8-d286-40a3-a531-a09fb9e9ae49)
+![hybrid](https://github.com/user-attachments/assets/b67dbd45-ed02-4a8f-99b8-5ad6e18472eb)
 
 
 
