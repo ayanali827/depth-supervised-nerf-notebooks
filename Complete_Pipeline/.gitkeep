@@ -1,0 +1,25 @@
+# This folder contains the all-in-one complete pipeline notebook
+
+## Upload Instructions:
+
+1. Upload your merged notebook here with filename:
+   Complete_NeRF_Depth_Supervision_Pipeline.ipynb
+
+2. The notebook should combine all 9 modular notebooks:
+   - 00_Setup_and_Dependencies
+   - 01_Data_Loading
+   - 02_Core_Components
+   - 03_Baseline_NeRF
+   - 04_Soft_Depth_Supervision
+   - 05_Hard_Depth_Sampling
+   - 06_Hybrid_Strategy
+   - 07_Comprehensive_Evaluation
+   - 08_Rendering_and_Visualization
+
+3. Include table of contents with anchor links
+
+4. Add progress indicators and checkpoint saving
+
+5. Include option to skip already-trained experiments
+
+See README.md in this folder for complete documentation.
