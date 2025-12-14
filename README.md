@@ -205,32 +205,6 @@ where T(t) = exp(-∫ σ(r(s)) ds)  (transmittance)
 
 **For detailed derivations, see [THEORY.md](THEORY.md)**
 
----
-
-## 🎥 **Demonstration**
-
-### Video Demonstration
-
-*Showing training process, comparison of all strategies, and quantitative results*
-
-### Visual Comparison
-
-<table>
-  <tr>
-    <td><b>Baseline</b></td>
-    <td><b>Soft Depth</b></td>
-    <td><b>Hard Sampling</b></td>
-    <td><b>Hybrid</b></td>
-  </tr>
-  <tr>
-    <td>RGB Loss Only</td>
-    <td>+ Depth MSE</td>
-    <td>+ Guided Sampling</td>
-    <td>Best of Both</td>
-  </tr>
-</table>
-
-*Results will be uploaded after experiments complete*
 
 #### Step 4: Download Data
 
@@ -465,14 +439,6 @@ Depth-NeRF-Research/
 │
 └── raw_data/                 ← NeRF Synthetic dataset (2.5GB)
     └── nerf_synthetic/
-```
-
-**Download links:**
-- Trained models: [models.zip](https://drive.google.com/placeholder)
-- Videos: [videos.zip](https://drive.google.com/placeholder)
-- Full dataset: [data.zip](https://drive.google.com/placeholder)
-
----
 
 ## 📂 **Repository Structure**
 
@@ -547,21 +513,6 @@ python -c "import torch; print(torch.cuda.is_available())"
 - Try hybrid strategy (most robust)
 - Check depth ground truth quality
 
----
-
-## 📚 **Citation**
-
-```bibtex
-@misc{ali2025depthnerf,
-  title={Research on Improving NeRF Training Quality Using Depth Data},
-  author={Ali, Ayan},
-  year={2025},
-  institution={ITMO University},
-  note={Comparative study of depth supervision strategies for Neural Radiance Fields},
-  howpublished={\url{https://github.com/ayanali827/depth-supervised-nerf-notebooks}}
-}
-```
-
 **Original NeRF:**
 
 ```bibtex
@@ -573,13 +524,6 @@ python -c "import torch; print(torch.cuda.is_available())"
 }
 ```
 
----
-
-## 📄 **License**
-
-MIT License - see [LICENSE](LICENSE) file
-
----
 
 ## 🙏 **Acknowledgments**
 
