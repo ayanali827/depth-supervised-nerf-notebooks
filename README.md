@@ -12,10 +12,10 @@
   <img src="hybrid_best.gif" alt="Hybrid Strategy Best Result" width="600"/>
   <br>
   ![Image]
-  (https://github.com/user-attachments/assets/1bfcbc38-b336-4a5d-851f-dacbb31c84be)
+(https://github.com/user-attachments/assets/1bfcbc38-b336-4a5d-851f-dacbb31c84be)](https://github.com/ayanali827/depth-supervised-nerf-notebooks/issues/2#issue-3727417270)
   <em><strong>🏆 Best result achieved:</strong> The Hybrid depth supervision strategy combines soft and hard constraints, achieving <strong>22.32 dB PSNR</strong> and <strong>0.778 SSIM</strong> - the highest quality rendering with optimal geometric accuracy.</em>
 </p>
-
+https://github.com/ayanali827/depth-supervised-nerf-notebooks/issues/2#issue-3727417270
 ---
 
 ## 👥 **Participants**
