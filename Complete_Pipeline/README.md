@@ -1,12 +1,3 @@
-# Complete NeRF Depth Supervision Research Pipeline
-
-**Research Project:** Improving NeRF Training Quality Using Depth Data  
-**Author:** Ayan Ali  
-**Institution:** ITMO University, Robotics & AI (2024-2026)  
-**Date:** December 2025
-
----
-
 ## 📚 Table of Contents
 
 1. [Environment Setup & Dependencies](#setup)
