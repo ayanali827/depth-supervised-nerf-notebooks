@@ -437,6 +437,13 @@ jupyter notebook 08_Rendering_and_Visualization.ipynb
 
 ---
 
+
+
+![hybrid](https://github.com/user-attachments/assets/e2ea920f-45f7-47b7-a5f3-bdc7feb3ce56)
+
+
+
+
 ### Research Conclusions
 
 1. **Depth supervision improves geometric consistency** at the cost of slight RGB quality degradation
