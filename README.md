@@ -409,10 +409,6 @@ jupyter notebook 08_Rendering_and_Visualization.ipynb
 
 ## 📁 **Research Artifacts**
 
-**All experimental data available at:**
-
-📦 **[Google Drive - Complete Results](https://drive.google.com/drive/folders/placeholder)**
-
 ```
 Depth-NeRF-Research/
 ├── trained_models/           ← All .pth weight files (200MB)
@@ -440,6 +436,8 @@ Depth-NeRF-Research/
 └── raw_data/                 ← NeRF Synthetic dataset (2.5GB)
     └── nerf_synthetic/
 
+
+```
 ## 📂 **Repository Structure**
 
 ```
