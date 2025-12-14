@@ -598,13 +598,7 @@ python -c "import torch; print(torch.cuda.is_available())"
 }
 ```
 
----
 
-## 📄 **License**
-
-MIT License - see [LICENSE](LICENSE) file
-
----
 
 ## 🙏 **Acknowledgments**
 
