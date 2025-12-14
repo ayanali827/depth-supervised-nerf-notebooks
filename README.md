@@ -378,6 +378,15 @@ jupyter notebook 08_Rendering_and_Visualization.ipynb
 ---
 
 
+<p align="center">
+  <img src="assets/hybrid_best.gif" alt="Hybrid Depth-Supervised NeRF Result" width="700"/>
+  <br>
+  <em><strong>Best result:</strong> Hybrid depth supervision strategy on the LEGO NeRF scene.</em>
+</p>
+
+---
+
+
 
 
 ## 📊 **Research Results**
