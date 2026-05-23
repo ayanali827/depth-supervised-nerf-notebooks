@@ -36,7 +36,7 @@ If the script doesn't work, download manually:
 
 **NeRF Synthetic Dataset (Main Dataset):**
 
-1. **Download Link:** [Google Drive - NeRF Synthetic]([https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1](https://drive.google.com/drive/folders/1cK3UDIJqKAAm7zyrxRYVFJ0BRMgrwhh4)](https://drive.google.com/drive/folders/1cK3UDIJqKAAm7zyrxRYVFJ0BRMgrwhh4))
+1. **Download Link:** [Google Drive - NeRF Synthetic]([https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1](https://drive.google.com/drive/folders/1cK3UDIJqKAAm7zyrxRYVFJ0BRMgrwhh4)]([https://drive.google.com/drive/folders/1cK3UDIJqKAAm7zyrxRYVFJ0BRMgrwhh4](https://docs.google.com/uc?export=download&id=18JxhpWD-4ZmuFKLzKlAw-w5PpzZxXOcG)))
 
 2. **Direct Download (if available):**
    ```bash
