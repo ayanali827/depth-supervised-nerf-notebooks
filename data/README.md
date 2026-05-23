@@ -41,7 +41,7 @@ If the script doesn't work, download manually:
 2. **Direct Download (if available):**
    ```bash
    # Download nerf_synthetic.zip (2.2 GB)
-   wget --no-check-certificate '[https://docs.google.com/uc?export=download&id=18JxhpWD-4ZmuFKLzKlAw-w5PpzZxXOcG](https://drive.google.com/drive/folders/1cK3UDIJqKAAm7zyrxRYVFJ0BRMgrwhh4]' -O nerf_synthetic.zip
+   wget --no-check-certificate '[https://drive.google.com/drive/folders/1cK3UDIJqKAAm7zyrxRYVFJ0BRMgrwhh4]' -O nerf_synthetic.zip
    
    # Or use gdown
    pip install gdown
